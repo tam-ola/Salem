@@ -1,0 +1,56 @@
+/* Design tokens. Phase 1 is deliberately plain; phase 3 replaces the values,
+   not the names. Dark is the primary target. */
+:root {
+  color-scheme: dark;
+  --color-bg: #14152b;
+  --color-surface: #1e2040;
+  --color-surface-raised: #282b52;
+  --color-text: #ecebf5;
+  --color-text-muted: #a9a8c4;
+  --color-accent: #e8b25c;
+  --color-accent-text: #1a1406;
+  --color-ok: #8fd19e;
+  --color-wrong: #f19a8e;
+  --color-close: #e8d27c;
+  --color-border: #3b3e6b;
+
+  --font-scripture: Georgia, 'Times New Roman', serif;
+  --font-ui: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --text-scale: 1;
+  --size-ui: 1rem;
+  --size-small: 0.875rem;
+  --size-verse: calc(1.1875rem * var(--text-scale)); /* 19px, never below 18px */
+  --size-reference: 1.5rem;
+  --size-held: 3.5rem;
+  --line-verse: 1.8;
+  --measure-verse: 58ch;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --radius: 0.5rem;
+  --tap-min: 2.75rem;
+  --action-bar-height: 5rem;
+  --blank-char: 0.62em;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+    --color-bg: #f6f5fb;
+    --color-surface: #ffffff;
+    --color-surface-raised: #ecebf7;
+    --color-text: #1b1c33;
+    --color-text-muted: #5c5c78;
+    --color-accent: #9a5d00;
+    --color-accent-text: #ffffff;
+    --color-ok: #1f7a3a;
+    --color-wrong: #b3261e;
+    --color-close: #7a6000;
+    --color-border: #cfcfe2;
+  }
+}
