@@ -67,7 +67,8 @@ function run(storeName, mode, fn) {
   return new Promise((resolve, reject) => {
     const tx = db.transaction(storeName, mode);
     const result = fn(tx.objectStore(storeName));
-    tx.oncomplete = () => resolve(result?.result ?? result);
+    // A request's result can legitimately be undefined (a missing key).
+    tx.oncomplete = () => resolve(result instanceof IDBRequest ? result.result : result);
     tx.onerror = () => reject(tx.error);
     tx.onabort = () => reject(tx.error ?? new Error('transaction aborted'));
   });

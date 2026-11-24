@@ -1,28 +1,52 @@
-/* Design tokens. Phase 1 is deliberately plain; phase 3 replaces the values,
-   not the names. Dark is the primary target. */
+/* Design tokens: the Garden look. Every colour, size and space lives here.
+   Day palette on :root; night palette follows the device setting unless the
+   user picks Day or Night in settings (data-theme on <html>). */
 :root {
-  color-scheme: dark;
-  --color-bg: #14152b;
-  --color-surface: #1e2040;
-  --color-surface-raised: #282b52;
-  --color-text: #ecebf5;
-  --color-text-muted: #a9a8c4;
-  --color-accent: #e8b25c;
-  --color-accent-text: #1a1406;
-  --color-ok: #8fd19e;
-  --color-wrong: #f19a8e;
-  --color-close: #e8d27c;
-  --color-border: #3b3e6b;
+  color-scheme: light;
+  --bg: #eef3e8;
+  --bg-glow: #dcebcf;
+  --surface: #ffffff;
+  --well: #e3ebdb;
+  --line: #c7d6bc;
+  --text: #183424;
+  --text-muted: #557060;
+  --accent: #2e7d4f;
+  --accent-press: #1d5a37;
+  --on-accent: #ffffff;
+  --gold: #b07a12;
+  --on-gold: #ffffff;
+  --ok: #2e7d4f;
+  --ok-bg: #d4ecd9;
+  --ok-text: #14472a;
+  --bad: #b23c27;
+  --bad-bg: #f7dcd3;
+  --bad-text: #6e2214;
+  --info-bg: #fff3d4;
+  --info-text: #4a3505;
+  --track: #d6e2cc;
+  --progress-from: #4f9e6a;
+  --progress-to: #8cc47a;
+  --leaf: #3f9160;
+  --stem: #2e7d4f;
+  --seed: #b07a12;
+  --bloom: #e3a92b;
+  --soil: #8aa08f;
+  --shadow: rgba(24, 52, 36, 0.12);
 
-  --font-scripture: Georgia, 'Times New Roman', serif;
-  --font-ui: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-scripture: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-small-caps: 'Playfair Display SC', 'Playfair Display', Georgia, serif;
+  --font-ui: 'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
   --text-scale: 1;
+  --size-verse: calc(1.25rem * var(--text-scale)); /* 20px; never below 18px */
+  --size-chip: calc(1.125rem * var(--text-scale)); /* 18px */
   --size-ui: 1rem;
   --size-small: 0.875rem;
-  --size-verse: calc(1.1875rem * var(--text-scale)); /* 19px, never below 18px */
-  --size-reference: 1.5rem;
-  --size-held: 3.5rem;
+  --size-eyebrow: 0.75rem;
+  --size-ref: 1.875rem;
+  --size-ref-sm: 1.5rem;
+  --size-display: 1.75rem;
+  --size-held: 4rem;
   --line-verse: 1.8;
   --measure-verse: 58ch;
 
@@ -30,27 +54,36 @@
   --space-2: 0.5rem;
   --space-3: 0.75rem;
   --space-4: 1rem;
+  --space-5: 1.25rem;
   --space-6: 1.5rem;
   --space-8: 2rem;
-  --radius: 0.5rem;
+  --radius: 1.125rem;
+  --radius-sm: 0.625rem;
+  --radius-pill: 999px;
   --tap-min: 2.75rem;
-  --action-bar-height: 5rem;
+  --button-height: 3.25rem;
+  --press-depth: 4px;
+  --column: 34rem;
   --blank-char: 0.62em;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color-scheme: light;
-    --color-bg: #f6f5fb;
-    --color-surface: #ffffff;
-    --color-surface-raised: #ecebf7;
-    --color-text: #1b1c33;
-    --color-text-muted: #5c5c78;
-    --color-accent: #9a5d00;
-    --color-accent-text: #ffffff;
-    --color-ok: #1f7a3a;
-    --color-wrong: #b3261e;
-    --color-close: #7a6000;
-    --color-border: #cfcfe2;
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0f1913; --bg-glow: #1a2c20; --surface: #17251c; --well: #0b140f; --line: #2c4234;
+    --text: #e4efe2; --text-muted: #9fb7a6; --accent: #6cc28c; --accent-press: #3f8a5d; --on-accent: #0a2215;
+    --gold: #e2b24e; --on-gold: #241703; --ok: #6cc28c; --ok-bg: #163a26; --ok-text: #cdeed7;
+    --bad: #f19c88; --bad-bg: #44201a; --bad-text: #ffd9cf; --info-bg: #33290f; --info-text: #f6e4b5;
+    --track: #24372a; --progress-from: #4f9e6a; --progress-to: #9fd38a;
+    --leaf: #6cc28c; --stem: #4fa06e; --seed: #e2b24e; --bloom: #f0c25a; --soil: #4d6555; --shadow: rgba(0, 0, 0, 0.35);
   }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0f1913; --bg-glow: #1a2c20; --surface: #17251c; --well: #0b140f; --line: #2c4234;
+  --text: #e4efe2; --text-muted: #9fb7a6; --accent: #6cc28c; --accent-press: #3f8a5d; --on-accent: #0a2215;
+  --gold: #e2b24e; --on-gold: #241703; --ok: #6cc28c; --ok-bg: #163a26; --ok-text: #cdeed7;
+  --bad: #f19c88; --bad-bg: #44201a; --bad-text: #ffd9cf; --info-bg: #33290f; --info-text: #f6e4b5;
+  --track: #24372a; --progress-from: #4f9e6a; --progress-to: #9fd38a;
+  --leaf: #6cc28c; --stem: #4fa06e; --seed: #e2b24e; --bloom: #f0c25a; --soil: #4d6555; --shadow: rgba(0, 0, 0, 0.35);
 }
